@@ -1,0 +1,21 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.entryBox {
+    background-color: #EEE;
+    margin: 2em;
+    padding: 1em;
+}
+
+.entryBox label {
+    font-weight: bold;
+}
+
+.entryBox input {
+    margin-left: .5em;
+}
+
+.entryBox .description {
+    font-style: italic;
+}
