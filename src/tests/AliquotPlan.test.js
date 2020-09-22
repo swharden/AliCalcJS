@@ -1,7 +1,7 @@
 import AliquotPlan from "../AliquotPlan.js"
 
-describe('injectedReducers', () => {
-    it('default oxytocin', () => {
+describe('calculations', () => {
+    it('match expected values for oxytocin', () => {
         let options = {
             compound: "oxytocin",
             solvent: "water",
