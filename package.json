@@ -1,5 +1,6 @@
 {
   "name": "alicalc",
+  "homepage": "https://swharden.com/software/alicalc/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

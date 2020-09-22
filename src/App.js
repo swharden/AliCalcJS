@@ -6,10 +6,13 @@ function App() {
 
   return (
     <>
-      <div><b>AliCalc</b></div>
-      <div><i>Aliquot Calculator</i></div>
-      <hr />
-      <AliquotCalculator />
+      <div className="header">
+        <div style={{ fontSize: "3em" }}><b>AliCalc</b></div>
+        <div><i>Aliquot Calculator for Electrophysiology</i></div>
+      </div>
+      <div className="content">
+        <AliquotCalculator />
+      </div>
     </>
   );
 }

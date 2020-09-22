@@ -1,21 +1,53 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
 }
 
-.entryBox {
-    background-color: #EEE;
-    margin: 2em;
+.header {
+    background-color: #003366;
+    color: white;
     padding: 1em;
 }
 
-.entryBox label {
-    font-weight: bold;
+.content {
+    padding: 1em;
 }
 
-.entryBox input {
-    margin-left: .5em;
+.compoundInfoRow {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.entryBox .description {
+.compoundInfoBox {
+    /*flex-grow: 1;*/
+    margin: .5em;
+    padding: .5em;
+    border: 1px solid #CCC;
+    background-color: #EEE;
+}
+
+.compoundInfoBox label {
+    font-weight: 600;
+}
+
+.compoundInfoBox input {
+    width: 90%;
+}
+
+.compoundInfoBox .infoDetail {
+    font-size: 80%;
     font-style: italic;
+}
+
+.freezerBox {
+    padding: 1em;
+}
+
+.freezerBox img {
+    padding: .25em .25em;
+    height: 3em;
+}
+
+li{
+    margin-bottom: 1em;
 }

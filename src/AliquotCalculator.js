@@ -7,12 +7,19 @@ class AliquotCalculator extends React.Component {
 
     constructor(props) {
         super(props); // TODO: obsolete?
-        var defaultPlan = new AliquotPlan("Oxytocin", 1007.19, 1, 1, .2);
+        let defaultOptions = {
+            compound: "oxytocin",
+            solvent: "water",
+            mw: 1007.19,
+            massMG: 1,
+            stockConcMM: 1,
+            bathConcUM: .2
+        };
+        var defaultPlan = new AliquotPlan(defaultOptions);
         this.state = { plan: defaultPlan };
     }
 
     updatePlan = (plan) => {
-        console.info(plan);
         this.setState({ plan: plan });
     };
 

@@ -9,22 +9,26 @@ class AliquotDesign extends React.Component {
         super(props);
 
         this.state = {
-            name: props.plan.name,
+            name: props.plan.compound,
+            solvent: props.plan.solvent,
             mw: props.plan.mw,
-            mass: props.plan.mass,
-            aliquotConc: props.plan.aliquotConc,
-            bathConc: props.plan.bathConc
+            mass: props.plan.massMG,
+            aliquotConc: props.plan.stockConcMM,
+            bathConc: props.plan.bathConcUM
         };
         this.handleChange = this.handleChange.bind(this);
     }
 
     sendNewPlan() {
-        let plan = new AliquotPlan(
-            this.state.name,
-            this.state.mw,
-            this.state.aliquotConc,
-            this.state.bathConc
-        )
+        let options = {
+            compound: this.state.name,
+            solvent: this.state.solvent,
+            mw: this.state.mw,
+            massMG: this.state.mass,
+            stockConcMM: this.state.aliquotConc,
+            bathConcUM: this.state.bathConc
+        };
+        let plan = new AliquotPlan(options)
         this.props.callback(plan);
     }
 
@@ -45,50 +49,115 @@ class AliquotDesign extends React.Component {
     render(props) {
         return (
             <>
-                <div>
-                    <label>Compound:</label>
-                    <input
-                        name="name"
-                        value={this.state.name}
-                        onChange={this.handleChange}
-                        type="text" />
+                <h2>Compound Information</h2>
+                <div className="compoundInfoRow">
+
+                    <div className="compoundInfoBox">
+                        <div>
+                            <label>Compound</label>
+                        </div>
+                        <div>
+                            <input
+                                name="name"
+                                value={this.state.name}
+                                onChange={this.handleChange}
+                                type="text"
+                            />
+                        </div>
+                        <div>
+                            <input
+                                type="radio"
+                                value="water"
+                                name="solvent"
+                                checked={this.state.solvent === 'water'}
+                                onChange={this.handleChange}
+                                style={{ "width": "1em" }}
+                            /> H<sub>2</sub>O
+                            <input
+                                type="radio"
+                                value="DMSO"
+                                name="solvent"
+                                checked={this.state.solvent === 'DMSO'}
+                                onChange={this.handleChange}
+                                style={{ "width": "1em", "margin-left": "1em" }}
+                            /> DMSO
+                        </div>
+                    </div>
+
+                    <div className="compoundInfoBox">
+                        <div>
+                            <label>MW (g/mol)</label>
+                        </div>
+                        <div>
+                            <input
+                                name="mw"
+                                value={this.state.mw}
+                                onChange={this.handleChange}
+                                type="text"
+                            />
+                        </div>
+                        <div className="infoDetail">
+                            Use the value printed on the container
+                        </div>
+                    </div>
+
+                    <div className="compoundInfoBox">
+                        <div>
+                            <label>Mass (mg)</label>
+                        </div>
+                        <div>
+                            <input
+                                name="mass"
+                                value={this.state.mass}
+                                onChange={this.handleChange}
+                                type="text"
+                            />
+                        </div>
+                        <div className="infoDetail">
+                            Mass of powder in an unopened container
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <label>MW (g / mol):</label>
-                    <input
-                        name="mw"
-                        value={this.state.mw}
-                        onChange={this.handleChange}
-                        type="text" />
+                <h2>Target Concentrations</h2>
+                <div className="compoundInfoRow">
+
+
+                    <div className="compoundInfoBox">
+                        <div>
+                            <label>Stock Solution (mM)</label>
+                        </div>
+                        <div>
+                            <input
+                                name="aliquotConc"
+                                value={this.state.aliquotConc}
+                                onChange={this.handleChange}
+                                type="text"
+                            />
+                        </div>
+                        <div className="infoDetail">
+                            Use a value near maximum solubility
+                        </div>
+                    </div>
+
+                    <div className="compoundInfoBox">
+                        <div>
+                            <label>Bath Concentration (µM)</label>
+                        </div>
+                        <div>
+                            <input
+                                name="bathConc"
+                                value={this.state.bathConc}
+                                onChange={this.handleChange}
+                                type="text"
+                            />
+                        </div>
+                        <div className="infoDetail">
+                            Final concentration in ACSF
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <label>mass (mg):</label>
-                    <input
-                        name="mass"
-                        value={this.state.mass}
-                        onChange={this.handleChange}
-                        type="text" />
-                </div>
-
-                <div>
-                    <label>aliquot conc (mM):</label>
-                    <input
-                        name="aliquotConc"
-                        value={this.state.aliquotConc}
-                        onChange={this.handleChange}
-                        type="text" />
-                </div>
-
-                <div>
-                    <label>bath conc (µM):</label>
-                    <input
-                        name="bathConc"
-                        value={this.state.bathConc}
-                        onChange={this.handleChange}
-                        type="text" />
-                </div>
             </>
         )
     }
