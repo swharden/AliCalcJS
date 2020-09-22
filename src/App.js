@@ -3,7 +3,6 @@ import AliquotCalculator from './AliquotCalculator.js'
 import './style.css'
 
 function App() {
-
   return (
     <>
       <div className="header">
