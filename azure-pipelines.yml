@@ -14,8 +14,3 @@ steps:
       npm install
       npm run build
     displayName: "build"
-
-  - task: CmdLine@2
-    inputs:
-      script: 'set CI=true&&npm test' 
-    displayName: "test"
