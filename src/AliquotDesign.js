@@ -1,52 +1,22 @@
 import React from 'react'
-import AliquotPlan from "./AliquotPlan.js"
 
 class AliquotDesign extends React.Component {
-
-    constructor(props) {
-
-        // TODO: what's the deal with obsolete super?
-        super(props);
-
-        this.state = {
-            name: props.plan.compound,
-            solvent: props.plan.solvent,
-            mw: props.plan.mw,
-            mass: props.plan.massMG,
-            aliquotConc: props.plan.stockConcMM,
-            bathConc: props.plan.bathConcUM
-        };
-        this.handleChange = this.handleChange.bind(this);
+    handleChange = e => {
+        this.props.updatePlan({ [e.target.name]: e.target.value },);
     }
 
-    sendNewPlan() {
-        let options = {
-            compound: this.state.name,
-            solvent: this.state.solvent,
-            mw: this.state.mw,
-            massMG: this.state.mass,
-            stockConcMM: this.state.aliquotConc,
-            bathConcUM: this.state.bathConc
-        };
-        let plan = new AliquotPlan(options)
-        this.props.callback(plan);
-    }
+    render() {
+        const {
+            compound,
+            solvent,
+            mw,
+            massMG,
+            stockConcMM,
+            bathConcUM
+        } = this.props.plan.state
 
-    handleChange(e) {
-        this.setState(
-            { [e.target.name]: e.target.value },
-            this.sendNewPlan
-        );
+        const { handleChange } = this
 
-        // The name of the HTML element defines
-        // which class variable to set with its value.
-
-        // Also placing the callback function name (without ())
-        // inside the setState function ensures state change
-        // happens before the function is called.
-    };
-
-    render(props) {
         return (
             <>
                 <h2>Compound Information</h2>
@@ -58,9 +28,9 @@ class AliquotDesign extends React.Component {
                         </div>
                         <div>
                             <input
-                                name="name"
-                                value={this.state.name}
-                                onChange={this.handleChange}
+                                name="compound"
+                                value={compound}
+                                onChange={handleChange}
                                 type="text"
                             />
                         </div>
@@ -69,17 +39,17 @@ class AliquotDesign extends React.Component {
                                 type="radio"
                                 value="water"
                                 name="solvent"
-                                checked={this.state.solvent === 'water'}
-                                onChange={this.handleChange}
+                                checked={solvent === 'water'}
+                                onChange={handleChange}
                                 style={{ "width": "1em" }}
                             /> H<sub>2</sub>O
                             <input
                                 type="radio"
                                 value="DMSO"
                                 name="solvent"
-                                checked={this.state.solvent === 'DMSO'}
-                                onChange={this.handleChange}
-                                style={{ "width": "1em", "margin-left": "1em" }}
+                                checked={solvent === 'DMSO'}
+                                onChange={handleChange}
+                                style={{ width: "1em", marginLeft: "1em" }}
                             /> DMSO
                         </div>
                     </div>
@@ -91,8 +61,8 @@ class AliquotDesign extends React.Component {
                         <div>
                             <input
                                 name="mw"
-                                value={this.state.mw}
-                                onChange={this.handleChange}
+                                value={mw}
+                                onChange={handleChange}
                                 type="text"
                             />
                         </div>
@@ -107,9 +77,9 @@ class AliquotDesign extends React.Component {
                         </div>
                         <div>
                             <input
-                                name="mass"
-                                value={this.state.mass}
-                                onChange={this.handleChange}
+                                name="massMG"
+                                value={massMG}
+                                onChange={handleChange}
                                 type="text"
                             />
                         </div>
@@ -129,9 +99,9 @@ class AliquotDesign extends React.Component {
                         </div>
                         <div>
                             <input
-                                name="aliquotConc"
-                                value={this.state.aliquotConc}
-                                onChange={this.handleChange}
+                                name="stockConcMM"
+                                value={stockConcMM}
+                                onChange={handleChange}
                                 type="text"
                             />
                         </div>
@@ -146,9 +116,9 @@ class AliquotDesign extends React.Component {
                         </div>
                         <div>
                             <input
-                                name="bathConc"
-                                value={this.state.bathConc}
-                                onChange={this.handleChange}
+                                name="bathConcUM"
+                                value={bathConcUM}
+                                onChange={handleChange}
                                 type="text"
                             />
                         </div>
