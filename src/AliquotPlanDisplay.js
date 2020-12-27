@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import aliquotImage from './aliquot.png';
 
 class AliquotPlanDisplay extends Component {
     render() {
@@ -11,7 +12,7 @@ class AliquotPlanDisplay extends Component {
 
         let aliquotCount = Math.floor(this.props.plan.aliquotCount);
         let aliquotPics = Array.from(Array(Math.min(aliquotCount, 999)), (e, i) => {
-            return <img key={`aliquot-${i}`} src='aliquot.png' alt="aliquot unit marker" />
+            return <img key={`aliquot-${i}`} src={aliquotImage} alt="aliquot unit marker" />
         })
 
         return (
