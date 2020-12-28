@@ -3,13 +3,13 @@
   "name": "Aliquot Calculator for Electrophysiology",
   "icons": [
     {
-      "src": "/apple-touch-icon.png",
+      "src": "apple-touch-icon.png",
       "type": "image/png",
       "sizes": "120x120"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#003366",
   "background_color": "#003366"
 }
